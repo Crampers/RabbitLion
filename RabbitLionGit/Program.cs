@@ -11,7 +11,8 @@ namespace RabbitsLions
     {
         static void Main(string[] args)
         {
-            
+            Savannah savannah = new Savannah();
+            savannah.godCreates();
         }
     }
     //A class for the animals
@@ -23,26 +24,48 @@ namespace RabbitsLions
         private bool alive = true;
         private double weight;
         private int amount;
+        public abstract void move();
+        public abstract void eats();
 
-        abstract public void Move(char typ);
+         public bool checkNear()
+         {
+             bool confirmed = false;
+             return confirmed;
+         }
     }
 
     class Lion : Animals
     {
-        public override void Move(char typ)
+        public override void move()
         {
             int pOX = new Random().Next(-1, 1);
             int pOY = new Random().Next(-1, 1);
+        }
+
+        public override void eats()
+        {
+            if (checkNear() == true)
+            {
+                
+            }
         }
     }
 
     class Rabbit : Animals
     {
-        public override void Move(char typ)
+        public override void move()
         {
             int pOX = new Random().Next(-2, 2);
             int pOY = new Random().Next(-2, 2);
-        } 
+        }
+
+        public override void eats()
+        {
+            if (checkNear() == true)
+            {
+                
+            }
+        }
     }
     class Savannah
     {
