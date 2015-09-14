@@ -21,50 +21,33 @@ namespace RabbitsLions
         private char type;
         //Selfexplanatory
         private bool alive = true;
-        private double weight = 1.00;
+        private double weight;
         private int amount;
 
-        public void TestAlive(bool alive)
-        {
-            if (alive != true)
-            {
-                type = 'X';
-            }
-        }
-
-        public void rabbitOrLion()
-        {
-            char result;
-            int ra = 0;
-            Random r = new Random();
-            lock (this)
-            {
-                ra = r.Next(0, 100);
-            }
-            if (ra > 50)
-            {
-                result = 'R';
-            }
-            else
-                result = 'L';
-            type = result;
-        }
+        abstract public void Move(char typ);
     }
 
     class Lion : Animals
     {
-        
+        public override void Move(char typ)
+        {
+            int pOX = new Random().Next(-1, 1);
+            int pOY = new Random().Next(-1, 1);
+        }
     }
 
     class Rabbit : Animals
     {
-         
+        public override void Move(char typ)
+        {
+            int pOX = new Random().Next(-2, 2);
+            int pOY = new Random().Next(-2, 2);
+        } 
     }
     class Savannah
     {
         private int posX;
         private int posY;
-        private Savannah[,] spot;
         private Animals ani;
 
         public Savannah()
@@ -75,14 +58,7 @@ namespace RabbitsLions
 
         public void godCreates()
         {
-            spot = new Savannah[posX, posY];
-            for (int i = 0; i < posX; i++)
-            {
-                for (int j = 0; j < posY; j++)
-                {
-                    spot[i, j] = new Savannah();
-                }
-            }
+            Savannah [,] spot = new Savannah[posX, posY];
         }
     }
 }
