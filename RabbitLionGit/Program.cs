@@ -13,12 +13,12 @@ namespace RabbitsLions
         {
             Savannah savannah = new Savannah();
             savannah.godCreates();
-            //savannah.godTaketh();
         }
     }
     //A class for the animals
      abstract class Animals
     {
+
         //the char type is to determine the animal ex. R - Rabbit, L - Lion, X - Dead
         private char type;
         //Selfexplanatory
@@ -27,7 +27,6 @@ namespace RabbitsLions
         private int amount;
         public abstract void move();
         public abstract void eats();
-
          public bool checkNear()
          {
              bool confirmed = false;
@@ -56,8 +55,8 @@ namespace RabbitsLions
     {
         public override void move()
         {
-            int pOX = new Random().Next(-2, 2);
-            int pOY = new Random().Next(-2, 2);
+            int pOX = new Random().Next(-1, 2);
+            int pOY = new Random().Next(-1, 2);
         }
 
         public override void eats()
@@ -84,5 +83,15 @@ namespace RabbitsLions
         {
             Savannah [,] spot = new Savannah[posX, posY];
         }
+        for (int i = 0; i < length; i++)
+			{
+			 
+			}
+    }
+
+    class Grow
+    {
+        public double weight = 1.00;
+        public double grow = 0.25;
     }
 }
