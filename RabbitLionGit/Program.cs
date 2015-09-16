@@ -18,7 +18,6 @@ namespace RabbitsLions
     //A class for the animals
      abstract class Animals
     {
-
         //the char type is to determine the animal ex. R - Rabbit, L - Lion, X - Dead
         private char type;
         //Selfexplanatory
@@ -32,6 +31,15 @@ namespace RabbitsLions
              bool confirmed = false;
              return confirmed;
          }
+    }
+    class Grass
+    {
+        public double weight = 1.00;
+
+        private void grow()
+        {
+            weight = weight + 0.25;
+        }
     }
 
     class Lion : Animals
@@ -67,31 +75,25 @@ namespace RabbitsLions
             }
         }
     }
+
     class Savannah
     {
-        private int posX;
-        private int posY;
-        private Animals ani;
-
-        public Savannah()
-        {
-            posY = 20;
-            posX = 20;
-        }
-
+        private Field spot;
         public void godCreates()
         {
-            Savannah [,] spot = new Savannah[posX, posY];
+            Field [,] spot = new Field[20,20];
+            for (int i = 0; i < 20; i++)
+            {
+                for (int j = 0; j < 20; j++)
+                {
+                    spot[i,j] = new Field();
+                }
+            }
         }
-        for (int i = 0; i < length; i++)
-			{
-			 
-			}
     }
-
-    class Grow
+    class Field
     {
-        public double weight = 1.00;
-        public double grow = 0.25;
+        private Animals ani;
+        private Grass grass;
     }
 }
