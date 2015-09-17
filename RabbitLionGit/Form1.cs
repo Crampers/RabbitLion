@@ -16,36 +16,33 @@ namespace RabbitLionGit
         private Savannah savannah;
         private Random ran;
         private Random ran2;
-        private PictureBox pictureBox;
         
         public Form1()
         {
             InitializeComponent();
             ran = new Random();
             ran2 = new Random(DateTime.Now.Millisecond + 5);
-            pictureBox = new PictureBox();
-            savannah = new Savannah(pictureBox, ran, ran2);
-            foreach (var animal in savannah.spot)
+            savannah = new Savannah(pictureBox1, ran, ran2);
+            foreach (var animal in savannah.africa)
             {
                 if (animal.ani != null)
                     Console.WriteLine(animal.ani.GetType());
             }
-            for (int i1 = 0; i1 < 1; i1++)
-            {
+
                 for (int i2 = 0; i2 < 20; i2++)
                 {
                     for (int i3 = 0; i3 < 20; i3++)
                     {
                         //Creating a Console App to test and see if the objects are in fact created
-                        if (savannah.spot[i2, i3].ani is Rabbit)
+                        if (savannah.africa[i2, i3].ani is Rabbit)
                         {
                             Console.Write("R ");
                         }
-                        if (savannah.spot[i2, i3].ani is Lion)
+                        if (savannah.africa[i2, i3].ani is Lion)
                         {
                             Console.Write("L ");
                         }
-                        if (savannah.spot[i2, i3].ani == null)
+                        if (savannah.africa[i2, i3].ani == null)
                         {
                             Console.Write("  ");
                         }
@@ -55,7 +52,6 @@ namespace RabbitLionGit
                 Console.WriteLine("----------------------------------------/");
                 //Sleep is made to test if the objects does in fact move
                 Thread.Sleep(1000);
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -74,7 +70,7 @@ namespace RabbitLionGit
                 }
             }
             pictureBox1.Image = bmp;*/
-            savannah.draw();
+            savannah.Draw();
         }
     }
 }

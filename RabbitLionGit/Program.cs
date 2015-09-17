@@ -21,6 +21,4 @@ namespace RabbitsLions
             Console.ReadKey();
         }
     }
-    //A class for the animals
-    
 }

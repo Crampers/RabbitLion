@@ -11,34 +11,33 @@ namespace RabbitLionGit
 {
     class Savannah
     {
-        public Field[,] spot;
+        public Field[,] africa = new Field[20, 20];
         public PictureBox pictureBox1;
         public Savannah(PictureBox picBox, Random ranX, Random ranY)
         {
             pictureBox1 = picBox;
-            spot = new Field[20, 20];
             for (int i = 0; i < 20; i++)
             {
                 for (int j = 0; j < 20; j++)
                 {
-                    spot[i, j] = new Field();
+                    africa[i, j] = new Field();
                 }
             }
             for (int i = 0; i < 22; i++)
             {
                 int ranX2 = ranX.Next(0, 20);
                 int ranY2 = ranY.Next(0, 20);
-                if (i < 7 && spot[ranX2, ranY2].ani == null)
+                if (i < 7 && africa[ranX2, ranY2].ani == null)
                 {
-                    spot[ranX2, ranY2].ani = new Rabbit(this, ranX2, ranY2);
+                    africa[ranX2, ranY2].ani = new Rabbit(this, ranX2, ranY2);
                 }
-                else if (i > 6 && i < 13 && spot[ranX2, ranY2].ani == null)
+                else if (i > 6 && i < 13 && africa[ranX2, ranY2].ani == null)
                 {
-                    spot[ranX2, ranY2].ani = new Lion(this, ranX2, ranY2);
+                    africa[ranX2, ranY2].ani = new Lion(this, ranX2, ranY2);
                 }
-                else if (i > 12 && spot[ranX2, ranY2].ani == null)
+                else if (i > 12 && africa[ranX2, ranY2].ani == null)
                 {
-                    spot[ranX2, ranY2].grass = new Grass();
+                    africa[ranX2, ranY2].grass = new Grass();
                 }
             }
         }
@@ -59,6 +58,15 @@ namespace RabbitLionGit
                 }
             }
             pictureBox1.Image = bmp;
+        }
+
+        public void drawGrass()
+        {
+            foreach (var grass in africa)
+            {
+                if(grass.grass != null)
+                    
+            }
         }
     }
 }
