@@ -13,8 +13,12 @@ namespace RabbitLionGit
     {
         public Field[,] africa = new Field[20, 20];
         public PictureBox pictureBox1;
-        public Savannah(PictureBox picBox, Random ranX, Random ranY)
+        public Random r;
+        public Random r2;
+        public Savannah(PictureBox picBox, Random rX, Random rY)
         {
+            r = rX;
+            r2 = rY;
             pictureBox1 = picBox;
             for (int i = 0; i < 20; i++)
             {
@@ -25,8 +29,8 @@ namespace RabbitLionGit
             }
             for (int i = 0; i < 22; i++)
             {
-                int ranX2 = ranX.Next(0, 20);
-                int ranY2 = ranY.Next(0, 20);
+                int ranX2 = rX.Next(0, 20);
+                int ranY2 = rY.Next(0, 20);
                 if (i < 7 && africa[ranX2, ranY2].ani == null)
                 {
                     africa[ranX2, ranY2].ani = new Rabbit(this, ranX2, ranY2);
@@ -41,12 +45,11 @@ namespace RabbitLionGit
                 }
             }
         }
-
+        Bitmap bmp;
+        Graphics grp;
         public void draw()
         {
-            Bitmap bmp;
             bmp = new Bitmap(pictureBox1.Width,pictureBox1.Height);
-            Graphics grp;
             grp = Graphics.FromImage(bmp);
             grp.Clear(Color.White);
             Pen p = new Pen(Color.Black);
@@ -62,10 +65,13 @@ namespace RabbitLionGit
 
         public void drawGrass()
         {
-            foreach (var grass in africa)
+            Pen pGrass = new Pen(Color.GreenYellow, 10);
+            foreach (var field in africa)
             {
-                if(grass.grass != null)
-                    
+                if (field.grass != null)
+                {
+                    grp.DrawRectangle(pGrass, field.grass );
+                } 
             }
         }
     }

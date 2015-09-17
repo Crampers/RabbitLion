@@ -8,12 +8,32 @@ namespace RabbitLionGit
 {
     class Grass
     {
-        public double weight = 1.00;
+        //giving grass a 
+        private double weight;
+        public int posX;
+        public int posY;
+        private Savannah s;
 
         //Grow makes the grass increase in size with every tick
-        private void grow()
+        private Grass(Savannah s,int x, int y)
         {
-            weight = weight * 1.1;
+            weight = 1.5;
+            posX = x;
+            posY = y;
+            this.s = s;
+        }
+
+        public void grow()
+        {
+            weight = weight*1.1;
+            if (weight < 3.50)
+            {
+                spread();
+            }
+        }
+        private void spread()
+        {
+            s.africa[posX + s.,posY].grass = new Grass();
         }
     }
 }

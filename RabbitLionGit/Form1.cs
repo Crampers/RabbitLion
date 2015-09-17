@@ -14,14 +14,19 @@ namespace RabbitLionGit
     public partial class Form1 : Form
     {
         private Savannah savannah;
-        private Random ran;
-        private Random ran2;
+        /*
+         * Reason for the DateTime call in ran2 is to create a necessary delay
+         * This delay is made so when running the program it actually creates
+         * a different random. If there was no delay both randoms would have
+         * exact same attributes meaning all the work done with them would
+         * have the same output eventhough they are different objects.
+         */
+        private Random ran = new Random();
+        private Random ran2 = new Random(DateTime.Now.Millisecond + 5);
         
         public Form1()
         {
             InitializeComponent();
-            ran = new Random();
-            ran2 = new Random(DateTime.Now.Millisecond + 5);
             savannah = new Savannah(pictureBox1, ran, ran2);
             foreach (var animal in savannah.africa)
             {
