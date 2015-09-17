@@ -26,7 +26,13 @@ namespace RabbitLionGit
             grp = Graphics.FromImage(bmp);
             grp.Clear(Color.White);
             Pen p = new Pen(Color.Wheat);
-            grp.DrawRectangle(p,10,10,20,20);
+            for (int i = 0; i < 401; i += 20)
+            {
+                for (int j = 0; j < 401; j += 20)
+                {
+                    grp.DrawRectangle(p, i, j, 20, 20);
+                }
+            }
             pictureBox1.Image = bmp;
         }
     }

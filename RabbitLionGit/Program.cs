@@ -50,9 +50,9 @@ namespace RabbitsLions
                 Console.WriteLine("----------------------------------------/");
                 Thread.Sleep(1000);
             }
-           /* Application.EnableVisualStyles();
+            Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());*/
+            Application.Run(new Form1());
             Console.ReadKey();
         }
     }
