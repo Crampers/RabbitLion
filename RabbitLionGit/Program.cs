@@ -11,35 +11,48 @@ namespace RabbitsLions
     {
         static void Main(string[] args)
         {
-            Savannah savannah = new Savannah();
-
-            for (int iii = 0; iii < 100; iii++)
+            Random r = new Random();
+            Random r2 = new Random(DateTime.Now.Millisecond + 5);
+            Savannah savannah = new Savannah(r,r2);
+            foreach (var animal in savannah.spot)
             {
-                for (int i = 0; i < 20; i++)
+                if(animal.ani !=null)
+                Console.WriteLine(animal.ani.GetType());
+            }
+            for (int i1 = 0; i1 < 1; i1++)
+            {
+                for (int i2 = 0; i2 < 20; i2++)
                 {
-                    for (int ii = 0; ii < 20; ii++)
+                    for (int i3 = 0; i3 < 20; i3++)
                     {
-                        if (savannah.spot[1,1] is Lion)
-                        {
-                            Console.Write("L ");
-                        }
-                        if (savannah.spot.ani is Rabbit)
+                        //Console.WriteLine(savannah.spot[i2,i3]);
+                        if (savannah.spot[i2, i3].ani is Rabbit)
                         {
                             Console.Write("R ");
                         }
-                        if (savannah.spot == null)
+                        if (savannah.spot[i2, i3].ani is Lion)
+                        {
+                            Console.Write("L ");
+                        }
+                        if (savannah.spot[i2, i3].ani == null)
                         {
                             Console.Write("  ");
+                        }
+                        if (savannah.spot[i2, i3].grass is Grass)
+                        {
+                            Console.Write("G ");
                         }
                     }
                     Console.WriteLine("|");
                 }
+                Console.WriteLine("----------------------------------------/");
+                Thread.Sleep(1000);
             }
-            Console.WriteLine("----------------------------------------");
+            Console.ReadKey();
         }
     }
     //A class for the animals
-     abstract class Animals
+    abstract class Animals
     {
         //the char type is to determine the animal ex. R - Rabbit, L - Lion, X - Dead
         private char type;
@@ -47,20 +60,30 @@ namespace RabbitsLions
         private bool alive = true;
         private double weight;
         private int amount;
+        private int posX;
+        private int posY;
+        private Savannah s;
         public abstract void move();
         public abstract void eats();
-         public bool checkNear()
-         {
-             bool confirmed = false;
-             /*
-              for(int i = -2; i < 3; i++)
-              for(int j = -2; j < 3; j++)
-              if(spot[í,j] is Lion||Rabbit)
-              confirmed == true
-              */
-             
-             return confirmed;
-         }
+
+        public Animals(Savannah s, int x, int y)
+        {
+            this.s = s;
+            posX = x;
+            posY = y;
+        }
+        public bool checkNear()
+        {
+            bool confirmed = false;
+            /*
+             for(int i = -2; i < 3; i++)
+             for(int j = -2; j < 3; j++)
+             if(spot[í,j] is Lion||Rabbit)
+             confirmed == true
+             */
+
+            return confirmed;
+        }
     }
     class Grass
     {
@@ -74,6 +97,10 @@ namespace RabbitsLions
 
     class Lion : Animals
     {
+        public Lion(Savannah s, int x, int y) : base(s, x, y)
+        {
+            
+        }
         public override void move()
         {
             int pOX = new Random().Next(-1, 1);
@@ -84,13 +111,17 @@ namespace RabbitsLions
         {
             if (checkNear() == true)
             {
-                
+
             }
         }
     }
 
     class Rabbit : Animals
     {
+        public Rabbit(Savannah s, int x, int y) : base(s,x,y)
+        {
+            
+        }
         public override void move()
         {
             int pOX = new Random().Next(-1, 2);
@@ -101,35 +132,39 @@ namespace RabbitsLions
         {
             if (checkNear() == true)
             {
-                 
+
             }
         }
     }
 
     class Savannah
     {
-        public Field spot;
-        public Savannah()
+        public Field[,] spot;
+        public Savannah(Random ranX, Random ranY)
         {
-            Field [,] spot = new Field[20,20];
-            for (int i = 0; i == 20; i++)
+            spot = new Field[20, 20];
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j == 20; j++)
+                for (int j = 0; j < 20; j++)
                 {
-                    spot[i,j] = new Field();
+                    spot[i, j] = new Field();
                 }
             }
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 22; i++)
             {
-                int ranX = new Random().Next(0, 21);
-                int ranY = new Random().Next(0, 21);
-                if(i < 7)
+                int ranX2 = ranX.Next(0,20);
+                int ranY2 = ranY.Next(0,20);
+                if (i < 7 && spot[ranX2, ranY2].ani == null)
                 {
-                    spot[ranX, ranY].ani = new Rabbit();
+                    spot[ranX2, ranY2].ani = new Rabbit(this, ranX2, ranY2);
                 }
-                else
+                else if(i > 6 && i < 13 && spot[ranX2,ranY2].ani == null )
                 {
-                    spot[ranX, ranY].ani = new Lion();
+                    spot[ranX2, ranY2].ani = new Lion(this, ranX2, ranY2);
+                }
+                else if (i > 12 && spot[ranX2, ranY2].ani == null)
+                {
+                    spot[ranX2, ranY2].grass = new Grass();
                 }
             }
         }
