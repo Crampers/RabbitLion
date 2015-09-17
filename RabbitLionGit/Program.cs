@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Windows.Forms;
+using RabbitLionGit;
 
 namespace RabbitsLions
 {
@@ -48,6 +50,9 @@ namespace RabbitsLions
                 Console.WriteLine("----------------------------------------/");
                 Thread.Sleep(1000);
             }
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
             Console.ReadKey();
         }
     }
