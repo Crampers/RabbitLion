@@ -42,7 +42,7 @@ namespace RabbitsLions
                         }
                         if (savannah.spot[i2, i3].grass is Grass)
                         {
-                            Console.Write("G ");
+                            Console.Write("G");
                         }
                     }
                     Console.WriteLine("|");
@@ -50,9 +50,9 @@ namespace RabbitsLions
                 Console.WriteLine("----------------------------------------/");
                 Thread.Sleep(1000);
             }
-            Application.EnableVisualStyles();
+           /* Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Form1());*/
             Console.ReadKey();
         }
     }
