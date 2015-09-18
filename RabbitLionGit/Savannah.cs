@@ -70,7 +70,7 @@ namespace RabbitLionGit
             {
                 if (field.grass != null)
                 {
-                    grp.DrawRectangle(pGrass, field.grass );
+                   // grp.DrawRectangle(pGrass, field.grass );
                 } 
             }
         }

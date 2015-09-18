@@ -34,20 +34,20 @@ namespace RabbitLionGit
                     Console.WriteLine(animal.ani.GetType());
             }
 
-                for (int i2 = 0; i2 < 20; i2++)
+                for (int i = 0; i < 20; i++)
                 {
-                    for (int i3 = 0; i3 < 20; i3++)
+                    for (int j = 0; j < 20; j++)
                     {
                         //Creating a Console App to test and see if the objects are in fact created
-                        if (savannah.africa[i2, i3].ani is Rabbit)
+                        if (savannah.africa[i, j].ani is Rabbit)
                         {
                             Console.Write("R ");
                         }
-                        if (savannah.africa[i2, i3].ani is Lion)
+                        if (savannah.africa[i, j].ani is Lion)
                         {
                             Console.Write("L ");
                         }
-                        if (savannah.africa[i2, i3].ani == null)
+                        if (savannah.africa[i, j].ani == null)
                         {
                             Console.Write("  ");
                         }
@@ -75,7 +75,7 @@ namespace RabbitLionGit
                 }
             }
             pictureBox1.Image = bmp;*/
-            savannah.Draw();
+            savannah.draw();
         }
     }
 }
