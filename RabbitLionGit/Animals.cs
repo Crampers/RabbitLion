@@ -24,7 +24,6 @@ namespace RabbitLionGit
         protected Animals(Savannah s, int x, int y)
         {
             this.s = s;
-
             posX = x;
             posY = y;
         }

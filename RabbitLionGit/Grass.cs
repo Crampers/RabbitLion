@@ -13,16 +13,15 @@ namespace RabbitLionGit
         public int posX;
         public int posY;
         private Savannah s;
-
-        //Grow makes the grass increase in size with every tick
-        public Grass(/*Savannah s,int x, int y*/)
+        
+        public Grass(Savannah s,int x, int y)
         {
-            //weight = 1.5;
-            //posX = x;
-            //posY = y;
-            //this.s = s;
+            weight = 1.5;
+            posX = x;
+            posY = y;
+            this.s = s;
         }
-
+        //Grow makes the grass increase in size with every tick
         public void grow()
         {
             weight = weight*1.1;
@@ -31,6 +30,7 @@ namespace RabbitLionGit
                 spread();
             }
         }
+        //Spread is made for the grass to, well spread
         private void spread()
         {
            // s.africa[posX + s.,posY].grass = new Grass();

@@ -41,15 +41,15 @@ namespace RabbitLionGit
                 }
                 else if (i > 12 && africa[ranX2, ranY2].ani == null)
                 {
-                    africa[ranX2, ranY2].grass = new Grass();
+                    africa[ranX2, ranY2].grass = new Grass(this, ranX2,ranY2);
                 }
             }
         }
         Bitmap bmp;
         Graphics grp;
-        public void draw()
+        private void drawField()
         {
-            bmp = new Bitmap(pictureBox1.Width,pictureBox1.Height);
+            bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             grp = Graphics.FromImage(bmp);
             grp.Clear(Color.White);
             Pen p = new Pen(Color.Black);
@@ -63,16 +63,40 @@ namespace RabbitLionGit
             pictureBox1.Image = bmp;
         }
 
-        public void drawGrass()
+        private void drawGrass()
         {
             Pen pGrass = new Pen(Color.GreenYellow, 10);
             foreach (var field in africa)
             {
-                if (field.grass != null)
+                if (field.grass is Grass)
                 {
-                   // grp.DrawRectangle(pGrass, field.grass );
-                } 
+                    grp.DrawRectangle(pGrass, (field.grass.posY * 20 + 6), (field.grass.posX * 20 + 6), 9, 9);
+                }
             }
+        }
+
+        private void drawAnimals()
+        {
+            Pen pRabbit = new Pen(Color.Khaki, 10);
+            Pen pLion = new Pen(Color.Goldenrod, 10);
+            foreach (var field in africa)
+            {
+                if (field.ani is Lion)
+                {
+                    grp.DrawRectangle(pLion, (field.ani.posY * 20 + 6), (field.ani.posX * 20 + 6), 9, 9);
+                }
+                if (field.ani is Rabbit)
+                {
+                    grp.DrawRectangle(pRabbit, (field.ani.posY * 20 + 6), (field.ani.posX * 20 + 6), 9, 9);
+                }
+            }
+        }
+
+        public void godCreates()
+        {
+            drawField();
+            drawGrass();
+            drawAnimals();
         }
     }
 }

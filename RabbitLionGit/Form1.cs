@@ -47,9 +47,13 @@ namespace RabbitLionGit
                         {
                             Console.Write("L ");
                         }
-                        if (savannah.africa[i, j].ani == null)
+                        if (savannah.africa[i, j].ani == null && savannah.africa[i,j].grass == null)
                         {
                             Console.Write("  ");
+                        }
+                        if (savannah.africa[i, j].grass != null)
+                        {
+                            Console.Write("G ");
                         }
                     }
                     Console.WriteLine("|");
@@ -75,7 +79,7 @@ namespace RabbitLionGit
                 }
             }
             pictureBox1.Image = bmp;*/
-            savannah.draw();
+            savannah.godCreates();
         }
     }
 }
