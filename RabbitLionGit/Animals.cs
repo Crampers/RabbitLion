@@ -16,10 +16,8 @@ namespace RabbitLionGit
         private Random newY;
         protected Savannah s;
 
-        public void eats()
-        {
-
-        }
+        public abstract void devour();
+        public abstract void move();
 
         protected Animals(Savannah s, int x, int y)
         {

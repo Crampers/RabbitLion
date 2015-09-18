@@ -15,5 +15,15 @@ namespace RabbitLionGit
         {
 
         }
+
+        public override void move()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void devour()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

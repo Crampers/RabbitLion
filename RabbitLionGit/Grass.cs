@@ -30,10 +30,10 @@ namespace RabbitLionGit
                 spread();
             }
         }
-        //Spread is made for the grass to, well spread
+        //Spread is made for the grass to... well spread
         private void spread()
         {
-           // s.africa[posX + s.,posY].grass = new Grass();
+            s.africa[posX + s.r.Next(-1, 1), posY + s.r2.Next(-1, 1)].grass = new Grass(s, posX, posY);
         }
     }
 }
