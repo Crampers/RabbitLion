@@ -22,10 +22,10 @@ namespace RabbitLionGit
 
         public override void devour()
         {
-            if (detectRabbit())
-            {
-                
-            }
+            Grass killMe = detectGrass();
+            var xGrass = killMe.posX;
+            var yGrass = killMe.posY;
+            s.africa[xGrass, yGrass].grass = null;
         }
     }
 }

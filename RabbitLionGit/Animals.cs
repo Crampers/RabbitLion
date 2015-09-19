@@ -76,14 +76,11 @@ namespace RabbitLionGit
                     {
                         return s.africa[x, y].ani;
                     }
-                    else
-                    {
-                        
-                    }
+
                 }
             }
         }
-        public Animals detectGrass()
+        public Grass detectGrass()
         {
             int x = posX;
             int y = posY;
@@ -93,11 +90,21 @@ namespace RabbitLionGit
                 {
                     if (s.africa[x, y].grass != null)
                     {
-                        return true;
+                        return s.africa[x, y].grass;
                     }
                 }
             }
-            return false;
+        }
+
+        public Animals mate(Animals detecter, Animals detectee)
+        {
+            if (detecter == detectee)
+            {
+                if (detecter.gender != detectee.gender)
+                {
+                    
+                }
+            }
         }
     }
 }
