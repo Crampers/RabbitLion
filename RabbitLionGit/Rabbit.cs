@@ -12,8 +12,9 @@ namespace RabbitLionGit
         public Rabbit(Savannah s, int x, int y)
             : base(s, x, y)
         {
-
+            s.africa[x, y].ani.weight = 10;
         }
+
         public override void move()
         {
             throw new NotImplementedException();
@@ -21,7 +22,10 @@ namespace RabbitLionGit
 
         public override void devour()
         {
-            throw new NotImplementedException();
+            if (detect())
+            {
+                
+            }
         }
     }
 }

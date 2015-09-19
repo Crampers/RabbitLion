@@ -33,6 +33,8 @@ namespace RabbitLionGit
                 if (animal.ani != null)
                     Console.WriteLine(animal.ani.GetType());
             }
+            for (int ikeepGoing = 0; ikeepGoing < 10; ikeepGoing++)
+            {
 
                 for (int i = 0; i < 20; i++)
                 {
@@ -47,19 +49,21 @@ namespace RabbitLionGit
                         {
                             Console.Write("L ");
                         }
-                        if (savannah.africa[i, j].ani == null && savannah.africa[i,j].grass == null)
+                        if (savannah.africa[i, j].ani == null && savannah.africa[i, j].grass == null)
                         {
                             Console.Write("  ");
                         }
                         if (savannah.africa[i, j].grass != null)
                         {
                             Console.Write("G ");
+                            savannah.africa[i, j].grass.grow();
                         }
                     }
                     Console.WriteLine("|");
                 }
                 Console.WriteLine("----------------------------------------/");
-                //Sleep is made to test if the objects does in fact move
+            }
+            //Sleep is made to test if the objects does in fact move
                 Thread.Sleep(1000);
         }
 
@@ -80,7 +84,7 @@ namespace RabbitLionGit
             }
             pictureBox1.Image = bmp;*/
 
-            savannah.godCreates();
+            savannah.godDraws();
         }
     }
 }

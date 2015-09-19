@@ -9,12 +9,13 @@ namespace RabbitLionGit
     abstract class Animals
     {
         //Selfexplanatory
-        private double weight;
+        public double weight;
         public int posX;
         public int posY;
         private Random newX;
         private Random newY;
         protected Savannah s;
+        public bool gender;
 
         public abstract void devour();
         public abstract void move();
@@ -38,5 +39,53 @@ namespace RabbitLionGit
             return confirmed;
         }
 
+        private void move()
+        {
+            int x = posX;
+            int y = posY;
+            if (x == 0)
+                x = x + s.r.Next(x, 2);
+            
+        }
+        public bool detect()
+        {
+            int x = posX;
+            int y = posY;
+            for (int i = -1; i < 2; i++)
+            {
+                for (int j = 0; j < 2; j++)
+                {
+                    if (s.africa[x,y].ani is Rabbit)
+                    {
+                        return true;
+                    }
+                    if (s.africa[x, y].grass != null)
+                    {
+                        return true;
+                    }
+                    if (s.africa[x, y].ani is Lion)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        //public bool detectGrass()
+        //{
+        //    int x = posX;
+        //    int y = posY;
+        //    for (int i = -1; i < 2; i++)
+        //    {
+        //        for (int j = 0; j < 2; j++)
+        //        {
+        //            if (s.africa[x, y].grass != null)
+        //            {
+        //                return true;
+        //            }
+        //        }
+        //    }
+        //    return false;
+        //}
     }
 }

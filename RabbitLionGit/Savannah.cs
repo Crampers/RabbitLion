@@ -41,7 +41,7 @@ namespace RabbitLionGit
                 }
                 else if (i > 12 && africa[ranX2, ranY2].ani == null)
                 {
-                    africa[ranX2, ranY2].grass = new Grass(this, ranX2,ranY2);
+                    africa[ranX2, ranY2].grass = new Grass(this, ranX2, ranY2);
                 }
             }
         }
@@ -92,11 +92,16 @@ namespace RabbitLionGit
             }
         }
 
-        public void godCreates()
+        public void godDraws()
         {
             drawField();
             drawGrass();
             drawAnimals();
+        }
+
+        public void checkBorder()
+        {
+            if(africa[])
         }
     }
 }

@@ -12,6 +12,8 @@ namespace RabbitLionGit
         private double weight;
         public int posX;
         public int posY;
+        private int nposX;
+        private int nposY;
         private Savannah s;
         
         public Grass(Savannah s,int x, int y)
@@ -24,6 +26,7 @@ namespace RabbitLionGit
         //Grow makes the grass increase in size with every tick
         public void grow()
         {
+            //Console.WriteLine("I got you mang");
             weight = weight*1.1;
             if (weight < 3.50)
             {
@@ -33,7 +36,11 @@ namespace RabbitLionGit
         //Spread is made for the grass to... well spread
         private void spread()
         {
-            s.africa[posX + s.r.Next(-1, 1), posY + s.r2.Next(-1, 1)].grass = new Grass(s, posX, posY);
+            
+            nposX = posX + 1;
+            nposY = posY + 1;
+            s.africa[nposX,nposY].grass = new Grass(s, posX, posY);
+            s.godDraws();
         }
     }
 }

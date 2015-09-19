@@ -13,7 +13,14 @@ namespace RabbitLionGit
         public Lion(Savannah s, int x, int y)
             : base(s, x, y)
         {
-
+            s.africa[x, y].ani.weight = 50;
+            int gend = s.r.Next(0, 10);
+            if (gend %2 != 0)
+                gender = false;
+            else
+            {
+                gender = true;
+            }
         }
 
         public override void move()
@@ -23,7 +30,13 @@ namespace RabbitLionGit
 
         public override void devour()
         {
-            throw new NotImplementedException();
+            do
+            {
+                if (detect())
+                {
+                    
+                }
+            } while (true);
         }
     }
 }
