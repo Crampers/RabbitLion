@@ -16,7 +16,36 @@ namespace RabbitLionGit
 
         public override void move()
         {
-            throw new NotImplementedException();
+            int nposX = posX;
+            int nposY = posY;
+
+            if (nposX > 19)
+            {
+                nposX = nposX + s.r.Next(-2, 0);
+            }
+            if (nposY > 19)
+            {
+                nposY = nposY + s.r.Next(-2, 0);
+            }
+            if (nposX < 0)
+            {
+                nposX = nposX + s.r.Next(0, 3);
+            }
+            if (nposY < 0)
+            {
+                nposY = nposY + s.r.Next(0, 3);
+            }
+            else
+            {
+                nposX = nposX + s.r.Next(-2, 3);
+                nposY = nposY + s.r2.Next(-2, 3);
+            }
+            Rabbit r = new Rabbit(s, nposX, nposY);
+            r.weight = s.africa[posX, posY].ani.weight;
+            r.gender = s.africa[posX, posY].ani.gender;
+            s.africa[nposX, nposY].ani = r;
+            s.africa[posX, posY].ani = null;
+            s.godDraws();
         }
 
         public override void devour()

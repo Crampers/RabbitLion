@@ -109,6 +109,7 @@ namespace RabbitLionGit
                     if (savannah.africa[i, j].ani is Rabbit)
                     {
                         Console.Write("R ");
+                        savannah.africa[i,j].ani.move();
                     }
                     if (savannah.africa[i, j].ani is Lion)
                     {

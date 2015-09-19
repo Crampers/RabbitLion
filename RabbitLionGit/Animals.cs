@@ -12,8 +12,6 @@ namespace RabbitLionGit
         public double weight;
         public int posX;
         public int posY;
-        private Random newX;
-        private Random newY;
         protected Savannah s;
         public bool gender;
 
@@ -25,6 +23,10 @@ namespace RabbitLionGit
             this.s = s;
             posX = x;
             posY = y;
+            try
+            {
+
+            
             if (s.africa[posX, posY].ani is Rabbit)
             {
                 weight = s.r.Next(7,10);
@@ -36,6 +38,11 @@ namespace RabbitLionGit
             if (s.africa[posX, posY].ani == null)
             {
                 
+            }
+            }
+            catch (IndexOutOfRangeException)
+            {
+                if()
             }
         }
         public bool checkNear()
