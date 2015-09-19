@@ -18,7 +18,7 @@ namespace RabbitLionGit
 
         /*
          * A bunch of abstract methods because Rabbits don't eat the same as lions
-         * Nor do are they capeable of moving the same amount of tiles
+         * Nor are they capeable of moving the same amount of tiles
          * also they can't interspecies - that would create some weird hybrid
          * Liobbits or Rions - or something along those lines
          */
