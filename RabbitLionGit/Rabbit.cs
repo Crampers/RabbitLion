@@ -19,32 +19,41 @@ namespace RabbitLionGit
             int nposX = posX;
             int nposY = posY;
 
+            
+            nposX = nposX + s.r.Next(-2, 3);
+            nposY = nposY + s.r2.Next(-2, 3);
             if (nposX > 19)
             {
-                nposX = nposX + s.r.Next(-2, 0);
+                while (nposX > 19)
+                {
+                    nposX--;
+                }
             }
             if (nposY > 19)
             {
-                nposY = nposY + s.r.Next(-2, 0);
+                while (nposY > 19)
+                {
+                    nposY--;
+                }
             }
             if (nposX < 0)
             {
-                nposX = nposX + s.r.Next(0, 3);
+                while (nposX < 0)
+                {
+                    nposX++;
+                }
             }
             if (nposY < 0)
             {
-                nposY = nposY + s.r.Next(0, 3);
+                while (nposY < 0)
+                {
+                    nposY++;
+                }
             }
-            else
-            {
-                nposX = nposX + s.r.Next(-2, 3);
-                nposY = nposY + s.r2.Next(-2, 3);
-            }
-            Rabbit r = new Rabbit(s, nposX, nposY);
-            r.weight = s.africa[posX, posY].ani.weight;
-            r.gender = s.africa[posX, posY].ani.gender;
-            s.africa[nposX, nposY].ani = r;
+            s.africa[nposX, nposY].ani = this;
             s.africa[posX, posY].ani = null;
+            posX = nposX;
+            posY = nposY;
             s.godDraws();
         }
 

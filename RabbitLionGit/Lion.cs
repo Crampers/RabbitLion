@@ -24,6 +24,7 @@ namespace RabbitLionGit
 
         public override void move()
         {
+            //haven't been made like Rabbit... YET
             int nposX = posX;
             int nposY = posY;
             
@@ -37,22 +38,18 @@ namespace RabbitLionGit
             }
             if (nposX < 0)
             {
-                nposX = nposX + s.r.Next(0, 2);
+                nposX = nposX + s.r.Next(1, 2);
             }
             if (nposY < 0)
             {
-                nposY = nposY + s.r.Next(0, 2);
+                nposY = nposY + s.r.Next(1, 2);
             }
-            else
-            {
                 nposX = nposX + s.r.Next(-1, 2);
                 nposY = nposY + s.r2.Next(-1, 2);
-            }
-            Lion l = new Lion(s, nposX,nposY);
-            l.weight = s.africa[posX, posY].ani.weight;
-            l.gender = s.africa[posX, posY].ani.gender;
-            s.africa[nposX, nposY].ani = l;
+            s.africa[nposX, nposY].ani = this;
             s.africa[posX, posY].ani = null;
+            posX = nposX;
+            posY = nposY;
             s.godDraws();
         }
 

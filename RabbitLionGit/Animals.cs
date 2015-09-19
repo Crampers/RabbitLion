@@ -23,9 +23,6 @@ namespace RabbitLionGit
             this.s = s;
             posX = x;
             posY = y;
-            try
-            {
-
             
             if (s.africa[posX, posY].ani is Rabbit)
             {
@@ -38,24 +35,7 @@ namespace RabbitLionGit
             if (s.africa[posX, posY].ani == null)
             {
                 
-            }
-            }
-            catch (IndexOutOfRangeException)
-            {
-                if()
-            }
-        }
-        public bool checkNear()
-        {
-            bool confirmed = false;
-            /*
-             for(int i = -2; i < 3; i++)
-             for(int j = -2; j < 3; j++)
-             if(spot[í,j] is Lion||Rabbit)
-             confirmed == true
-             */
-
-            return confirmed;
+            }            
         }
 
         //private void move()
