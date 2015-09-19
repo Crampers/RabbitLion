@@ -19,41 +19,35 @@ namespace RabbitLionGit
             int nposX = posX;
             int nposY = posY;
 
-            
+
             nposX = nposX + s.r.Next(-2, 3);
             nposY = nposY + s.r2.Next(-2, 3);
-            if (nposX > 19)
+            while (nposX > 19)
             {
-                while (nposX > 19)
-                {
-                    nposX--;
-                }
+                nposX--;
             }
-            if (nposY > 19)
+
+            while (nposY > 19)
             {
-                while (nposY > 19)
-                {
-                    nposY--;
-                }
+                nposY--;
             }
-            if (nposX < 0)
+
+
+            while (nposX < 0)
             {
-                while (nposX < 0)
-                {
-                    nposX++;
-                }
+                nposX++;
             }
-            if (nposY < 0)
+
+            while (nposY < 0)
             {
-                while (nposY < 0)
-                {
-                    nposY++;
-                }
+                nposY++;
             }
+
             s.africa[nposX, nposY].ani = this;
             s.africa[posX, posY].ani = null;
             posX = nposX;
             posY = nposY;
+            detectFRabbit();
             s.godDraws();
         }
 
@@ -63,7 +57,7 @@ namespace RabbitLionGit
             var xGrass = killMe.posX;
             var yGrass = killMe.posY;
             s.africa[xGrass, yGrass].grass = null;
-            this.weight = weight * (killMe.weight * -1.75);
+            weight = weight * (killMe.weight * -1.75);
         }
 
         public override void mate(Animals detecter, Animals detectee)

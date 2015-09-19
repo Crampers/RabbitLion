@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,13 @@ namespace RabbitLionGit
         protected Savannah s;
         public bool gender;
 
+        /*
+         * A bunch of abstract methods because Rabbits don't eat the same as lions
+         * Nor do are they capeable of moving the same amount of tiles
+         * also they can't interspecies - that would create some weird hybrid
+         * Liobbits or Rions - or something along those lines
+         */
+        
         public abstract void devour();
         public abstract void move();
         public abstract void mate(Animals detecter, Animals detectee);
@@ -87,13 +95,24 @@ namespace RabbitLionGit
             {
                 for (int j = -1; j < 2; j++)
                 {
-                    if (s.africa[x + i, y + j].grass != null)
+                    if (x + i > 19 || y + j > 19)
                     {
-                        return s.africa[x + i, y + j].grass;
+                        this++;
+                    }
+                    if (s.africa[x, y].grass != null)
+                    {
+                        return s.africa[x, y].grass;
                     } 
                 }
             }
+
             return null;
+        }
+
+        public void detectFRabbit()
+        {
+            detectGrass();
+            detectRabbit();
         }
 
         

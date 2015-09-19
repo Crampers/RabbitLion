@@ -27,25 +27,27 @@ namespace RabbitLionGit
             //haven't been made like Rabbit... YET
             int nposX = posX;
             int nposY = posY;
-            
-            if (nposX > 19)
+
+            nposX = nposX + s.r.Next(-1, 2);
+            nposY = nposY + s.r2.Next(-1, 2);
+            //Having while loops to make sure animals don't cross the border to uncreated fields
+            while (nposX > 19)
             {
-                nposX = nposX + s.r.Next(-1, 0);
+                nposX--;
             }
-            if (nposY > 19)
+
+            while (nposY > 19)
             {
-                nposY = nposY + s.r.Next(-1, 0);
+                nposY--;
             }
-            if (nposX < 0)
+            while (nposX < 0)
             {
-                nposX = nposX + s.r.Next(1, 2);
+                nposX++;
             }
-            if (nposY < 0)
+            while (nposY < 0)
             {
-                nposY = nposY + s.r.Next(1, 2);
+                nposY++;
             }
-                nposX = nposX + s.r.Next(-1, 2);
-                nposY = nposY + s.r2.Next(-1, 2);
             s.africa[nposX, nposY].ani = this;
             s.africa[posX, posY].ani = null;
             posX = nposX;
@@ -59,7 +61,7 @@ namespace RabbitLionGit
             var xRabbit = killMe.posX;
             var yRabbit = killMe.posY;
             s.africa[xRabbit, yRabbit].ani = null;
-            weight = weight*(killMe.weight * -1.75);
+            weight = weight * (killMe.weight * -1.75);
         }
 
         public override void mate(Animals detecter, Animals detectee)
@@ -72,7 +74,7 @@ namespace RabbitLionGit
                 {
                     for (int i = 0; i <= 2; i++)
                     {
-                        s.africa[ranX2, ranY2].ani = new Lion(s, ranX2, ranY2);  
+                        s.africa[ranX2, ranY2].ani = new Lion(s, ranX2, ranY2);
                     }
                 }
             }
