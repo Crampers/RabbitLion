@@ -29,14 +29,15 @@ namespace RabbitLionGit
         {
             InitializeComponent();
             savannah = new Savannah(pictureBox1, ran, ran2);
-            foreach (var animal in savannah.africa)
+            /*foreach (var animal in savannah.africa)
             {
                 if (animal.ani != null)
                     Console.WriteLine(animal.ani.GetType());
             }
-            int counter = 0;
+            
             for (int ikeepGoing = 0; ikeepGoing < 10; ikeepGoing++)
             {
+                int counter = 0;
 
                 for (int i = 0; i < 20; i++)
                 {
@@ -50,6 +51,7 @@ namespace RabbitLionGit
                         if (savannah.africa[i, j].ani is Lion)
                         {
                             Console.Write("L ");
+                            savannah.africa[i,j].ani.move();
                         }
                         if (savannah.africa[i, j].ani == null && savannah.africa[i, j].grass == null)
                         {
@@ -59,22 +61,17 @@ namespace RabbitLionGit
                         {
                             Console.Write("G ");
                             savannah.africa[i, j].grass.grow();
+                            counter = counter + 1;
+                    
                         }
                     }
                     Console.WriteLine("|");
                 }
                 Console.WriteLine("----------------------------------------/");
-                
-                foreach (var field in savannah.africa)
-                {
-                    if(field.grass != null)
-                    counter = counter + 1;
-                    Console.WriteLine("There is {0} amount of grass", counter);
-                }
-                Console.WriteLine();
+                Console.WriteLine("There is {0} amount of grass", counter);
             }
             //Sleep is made to test if the objects does in fact move
-                Thread.Sleep(1000);
+                Thread.Sleep(1000);*/
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -93,6 +90,44 @@ namespace RabbitLionGit
                 }
             }
             pictureBox1.Image = bmp;*/
+
+            foreach (var animal in savannah.africa)
+            {
+                if (animal.ani != null)
+                    Console.WriteLine(animal.ani.GetType());
+            }
+            foreach (var grass in savannah.africa)
+            {
+                if(grass.grass != null)
+                    Console.WriteLine(grass.grass.GetType());
+            }
+            for (int i = 0; i < 20; i++)
+            {
+                for (int j = 0; j < 20; j++)
+                {
+                    //Creating a Console App to test and see if the objects are in fact created
+                    if (savannah.africa[i, j].ani is Rabbit)
+                    {
+                        Console.Write("R ");
+                    }
+                    if (savannah.africa[i, j].ani is Lion)
+                    {
+                        Console.Write("L ");
+                        savannah.africa[i, j].ani.move();
+                    }
+                    if (savannah.africa[i, j].ani == null && savannah.africa[i, j].grass == null)
+                    {
+                        Console.Write("  ");
+                    }
+                    if (savannah.africa[i, j].grass != null)
+                    {
+                        Console.Write("G ");
+                        savannah.africa[i, j].grass.grow();
+                    }
+                }
+                Console.WriteLine("|");
+            }
+            Console.WriteLine("----------------------------------------/");
             savannah.godDraws();
         }
     }

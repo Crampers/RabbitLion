@@ -24,7 +24,31 @@ namespace RabbitLionGit
 
         public override void move()
         {
-            throw new NotImplementedException();
+            int nposX = posX;
+            int nposY = posY;
+            
+            if (nposX == 19)
+            {
+                nposX = nposX + s.r.Next(-1, 0);
+            }
+            if (nposY == 19)
+            {
+                nposY = nposY + s.r.Next(-1, 0);
+            }
+            if (nposX == 0)
+            {
+                nposX = nposX + s.r.Next(0, 2);
+            }
+            if (nposY == 0)
+            {
+                nposY = nposY + s.r.Next(0, 2);
+            }
+            Lion l = new Lion(s, nposX,nposY);
+            l.weight = s.africa[posX, posY].ani.weight;
+            l.gender = s.africa[posX, posY].ani.gender;
+            s.africa[nposX, nposY].ani = l;
+            s.africa[posX, posY].ani = null;
+            s.godDraws();
         }
 
         public override void devour()
@@ -33,6 +57,7 @@ namespace RabbitLionGit
             var xRabbit = killMe.posX;
             var yRabbit = killMe.posY;
             s.africa[xRabbit, yRabbit].ani = null;
+            this.weight = weight*(killMe.weight * -1.75);
         }
 
         public override void mate(Animals detecter, Animals detectee)
@@ -43,7 +68,10 @@ namespace RabbitLionGit
             {
                 if (detecter.gender != detectee.gender)
                 {
-                    s.africa[ranX2, ranY2].ani = new Lion(s, ranX2, ranY2);
+                    for (int i = 0; i <= 2; i++)
+                    {
+                        s.africa[ranX2, ranY2].ani = new Lion(s, ranX2, ranY2);  
+                    }
                 }
             }
         }

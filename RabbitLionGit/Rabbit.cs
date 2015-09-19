@@ -25,6 +25,7 @@ namespace RabbitLionGit
             var xGrass = killMe.posX;
             var yGrass = killMe.posY;
             s.africa[xGrass, yGrass].grass = null;
+            this.weight = weight * (killMe.weight * -1.75);
         }
 
         public override void mate(Animals detecter, Animals detectee)
@@ -35,7 +36,10 @@ namespace RabbitLionGit
             {
                 if (detecter.gender != detectee.gender)
                 {
-                    s.africa[ranX2, ranY2].ani = new Rabbit(s, ranX2, ranY2);
+                    for (int i = 0; i <= 4; i++)
+                    {
+                        s.africa[ranX2, ranY2].ani = new Rabbit(s, ranX2, ranY2);
+                    }
                 }
             }
         }
