@@ -22,7 +22,7 @@ namespace RabbitLionGit
 
         public override void devour()
         {
-            if (detect())
+            if (detectRabbit())
             {
                 
             }

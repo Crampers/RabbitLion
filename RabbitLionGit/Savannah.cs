@@ -101,7 +101,10 @@ namespace RabbitLionGit
 
         public void checkBorder()
         {
-            if(africa[])
+            if (true)
+            {
+                
+            }
         }
     }
 }

@@ -30,13 +30,26 @@ namespace RabbitLionGit
 
         public override void devour()
         {
-            do
+            int xRabbit;
+            int yRabbit;
+            detectRabbit();
+            detectRabbit().posX
+        }
+        public bool detectLion()
+        {
+            int x = posX;
+            int y = posY;
+            for (int i = -1; i < 2; i++)
             {
-                if (detect())
+                for (int j = 0; j < 2; j++)
                 {
-                    
+                    if (s.africa[x, y].ani is Lion)
+                    {
+                        return true;
+                    }
                 }
-            } while (true);
+            }
+            return false;
         }
     }
 }

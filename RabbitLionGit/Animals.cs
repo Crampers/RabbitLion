@@ -39,15 +39,32 @@ namespace RabbitLionGit
             return confirmed;
         }
 
-        private void move()
+        //private void move()
+        //{
+        //    int x = posX;
+        //    int y = posY;
+        //    if (x == 0)
+        //        x = x + s.r.Next(x, 2);
+            
+        //}
+        public Animals detectLion()
         {
             int x = posX;
             int y = posY;
-            if (x == 0)
-                x = x + s.r.Next(x, 2);
-            
+            for (int i = -1; i < 2; i++)
+            {
+                for (int j = 0; j < 2; j++)
+                {
+                    if (s.africa[x, y].ani is Lion)
+                    {
+                        return s.africa[x, y].ani;
+                    }
+
+                }
+            }
         }
-        public bool detect()
+        
+        public Animals detectRabbit()
         {
             int x = posX;
             int y = posY;
@@ -57,13 +74,24 @@ namespace RabbitLionGit
                 {
                     if (s.africa[x,y].ani is Rabbit)
                     {
-                        return true;
+                        return s.africa[x, y].ani;
                     }
-                    if (s.africa[x, y].grass != null)
+                    else
                     {
-                        return true;
+                        
                     }
-                    if (s.africa[x, y].ani is Lion)
+                }
+            }
+        }
+        public Animals detectGrass()
+        {
+            int x = posX;
+            int y = posY;
+            for (int i = -1; i < 2; i++)
+            {
+                for (int j = 0; j < 2; j++)
+                {
+                    if (s.africa[x, y].grass != null)
                     {
                         return true;
                     }
@@ -71,21 +99,5 @@ namespace RabbitLionGit
             }
             return false;
         }
-        //public bool detectGrass()
-        //{
-        //    int x = posX;
-        //    int y = posY;
-        //    for (int i = -1; i < 2; i++)
-        //    {
-        //        for (int j = 0; j < 2; j++)
-        //        {
-        //            if (s.africa[x, y].grass != null)
-        //            {
-        //                return true;
-        //            }
-        //        }
-        //    }
-        //    return false;
-        //}
     }
 }
