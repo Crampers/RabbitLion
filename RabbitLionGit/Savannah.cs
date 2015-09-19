@@ -94,17 +94,34 @@ namespace RabbitLionGit
 
         public void godDraws()
         {
-            drawField();
+            bool firstTime = false;
+            if (firstTime != true)
+            {
+              drawField();
+                firstTime = true;
+            }
             drawGrass();
             drawAnimals();
         }
 
-        public void checkBorder()
-        {
-            if (true)
-            {
+        //public void checkBorder()
+        //{
+        //    if (nposX == 19)
+        //    {
                 
-            }
-        }
+        //    }
+        //    if (nposY == 19)
+        //    {
+                
+        //    }
+        //    if (nposX == 0)
+        //    {
+                
+        //    }
+        //    if (africa[ == 0)
+        //    {
+                
+        //    }
+        //}
     }
 }

@@ -36,10 +36,25 @@ namespace RabbitLionGit
         //Spread is made for the grass to... well spread
         private void spread()
         {
-            nposX = posX + 1;
-            nposY = posY + 1;
+            nposX = posX;
+            nposY = posY;
+            if (nposX == 19)
+            {
+                nposX = nposX + s.r.Next(-1, 0);
+            }
+            if (nposY == 19)
+            {
+                nposY = nposY + s.r.Next(-1, 0);
+            }
+            if (nposX == 0)
+            {
+                nposX = nposX + s.r.Next(0, 2);
+            }
+            if (nposY == 0)
+            {
+                nposY = nposY + s.r.Next(0, 2);
+            }
             s.africa[nposX,nposY].grass = new Grass(s, posX, posY);
-            s.godDraws();
         }
     }
 }

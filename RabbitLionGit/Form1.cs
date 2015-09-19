@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,7 @@ namespace RabbitLionGit
                 if (animal.ani != null)
                     Console.WriteLine(animal.ani.GetType());
             }
+            int counter = 0;
             for (int ikeepGoing = 0; ikeepGoing < 10; ikeepGoing++)
             {
 
@@ -62,6 +64,14 @@ namespace RabbitLionGit
                     Console.WriteLine("|");
                 }
                 Console.WriteLine("----------------------------------------/");
+                
+                foreach (var field in savannah.africa)
+                {
+                    if(field.grass != null)
+                    counter = counter + 1;
+                    Console.WriteLine("There is {0} amount of grass", counter);
+                }
+                Console.WriteLine();
             }
             //Sleep is made to test if the objects does in fact move
                 Thread.Sleep(1000);
@@ -83,7 +93,6 @@ namespace RabbitLionGit
                 }
             }
             pictureBox1.Image = bmp;*/
-
             savannah.godDraws();
         }
     }

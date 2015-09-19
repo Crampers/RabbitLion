@@ -13,9 +13,8 @@ namespace RabbitLionGit
         public Lion(Savannah s, int x, int y)
             : base(s, x, y)
         {
-            s.africa[x, y].ani.weight = 50;
             int gend = s.r.Next(0, 10);
-            if (gend %2 != 0)
+            if (gend % 2 != 0)
                 gender = false;
             else
             {
@@ -35,6 +34,18 @@ namespace RabbitLionGit
             var yRabbit = killMe.posY;
             s.africa[xRabbit, yRabbit].ani = null;
         }
-        
+
+        public override void mate(Animals detecter, Animals detectee)
+        {
+            int ranX2 = s.r.Next(0, 20);
+            int ranY2 = s.r2.Next(0, 20);
+            if (detecter is Lion && detectee is Lion)
+            {
+                if (detecter.gender != detectee.gender)
+                {
+                    s.africa[ranX2, ranY2].ani = new Lion(s, ranX2, ranY2);
+                }
+            }
+        }
     }
 }

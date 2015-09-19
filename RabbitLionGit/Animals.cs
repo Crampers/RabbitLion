@@ -19,12 +19,24 @@ namespace RabbitLionGit
 
         public abstract void devour();
         public abstract void move();
-
+        public abstract void mate(Animals detecter, Animals detectee);
         protected Animals(Savannah s, int x, int y)
         {
             this.s = s;
             posX = x;
             posY = y;
+            if (s.africa[posX, posY].ani is Rabbit)
+            {
+                weight = s.r.Next(7,10);
+            }
+            else if (s.africa[posX,posY].ani is Lion)
+            {
+                weight = s.r2.Next(40, 60);
+            }
+            if (s.africa[posX, posY].ani == null)
+            {
+                
+            }
         }
         public bool checkNear()
         {
@@ -55,13 +67,13 @@ namespace RabbitLionGit
             {
                 for (int j = 0; j < 2; j++)
                 {
-                    if (s.africa[x, y].ani is Lion)
+                    if (s.africa[x + i, y+j].ani is Lion)
                     {
-                        return s.africa[x, y].ani;
+                        return s.africa[x + i, y + j].ani;
                     }
-
                 }
             }
+            return null;
         }
         
         public Animals detectRabbit()
@@ -72,13 +84,13 @@ namespace RabbitLionGit
             {
                 for (int j = 0; j < 2; j++)
                 {
-                    if (s.africa[x,y].ani is Rabbit)
+                    if (s.africa[x + i, y + j].ani is Rabbit)
                     {
-                        return s.africa[x, y].ani;
+                        return s.africa[x + i, y + j].ani;
                     }
-
                 }
             }
+            return null;
         }
         public Grass detectGrass()
         {
@@ -86,25 +98,17 @@ namespace RabbitLionGit
             int y = posY;
             for (int i = -1; i < 2; i++)
             {
-                for (int j = 0; j < 2; j++)
+                for (int j = -1; j < 2; j++)
                 {
-                    if (s.africa[x, y].grass != null)
+                    if (s.africa[x + i, y + j].grass != null)
                     {
-                        return s.africa[x, y].grass;
-                    }
+                        return s.africa[x + i, y + j].grass;
+                    } 
                 }
             }
+            return null;
         }
 
-        public Animals mate(Animals detecter, Animals detectee)
-        {
-            if (detecter == detectee)
-            {
-                if (detecter.gender != detectee.gender)
-                {
-                    
-                }
-            }
-        }
+        
     }
 }
