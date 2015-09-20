@@ -41,7 +41,6 @@ namespace RabbitLionGit
                 Thread.Sleep(20);
                 s.africa[posX, posY].ani = null;
             }
-
             posX = nposX;
             posY = nposY;
             s.godDraws();

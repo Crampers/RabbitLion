@@ -34,6 +34,7 @@ namespace RabbitLionGit
                 spread();
                 weight = weight - 1.0;
             }
+            s.godDraws();
         }
         //Spread is made for the grass to... well spread
         private void spread()

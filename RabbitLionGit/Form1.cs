@@ -29,6 +29,7 @@ namespace RabbitLionGit
         {
             InitializeComponent();
             savannah = new Savannah(pictureBox1, ran, ran2);
+            savannah.godDraws();
             /*foreach (var animal in savannah.africa)
             {
                 if (animal.ani != null)
@@ -76,6 +77,7 @@ namespace RabbitLionGit
 
         private void button1_Click(object sender, EventArgs e)
         {
+            savannah.godDraws();
             /*Bitmap bmp;
             bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             Graphics grp;
@@ -91,20 +93,17 @@ namespace RabbitLionGit
             }
             pictureBox1.Image = bmp;*/
 
-            foreach (var animal in savannah.africa)
+            foreach (var animal in savannah.africa.Cast<Field>().Where(animal => animal.ani != null))
             {
-                if (animal.ani != null)
-                    Console.WriteLine(animal.ani.gender);
+                Console.WriteLine(animal.ani.gender);
             }
-            foreach (var grass in savannah.africa)
+            foreach (var grass in savannah.africa.Cast<Field>().Where(grass => grass.grass != null))
             {
-                if(grass.grass != null)
-                    Console.WriteLine(grass.grass.GetType());
+                Console.WriteLine(grass.grass.GetType());
             }
-            int amount = 0;
-            for (int i = 0; i < 20; i++)
+            for (var i = 0; i < 20; i++)
             {
-                for (int j = 0; j < 20; j++)
+                for (var j = 0; j < 20; j++)
                 {
                     //Creating a Console App to test and see if the objects are in fact created
                     if (savannah.africa[i, j].ani is Rabbit)
@@ -130,16 +129,17 @@ namespace RabbitLionGit
                 Console.WriteLine("|");
                 savannah.godDraws();
             }
-            foreach (var animal in savannah.africa)
-            {
-                if (animal.ani is Lion)
-                {
-                    amount = amount + 1;
-                }
-            }
+            int amount = savannah.africa.Cast<Field>().Count(animal => animal.ani is Lion);
+            int amountR = savannah.africa.Cast<Field>().Count(animal => animal.ani is Rabbit);
             Console.WriteLine("----------------------------------------/");
-            Console.WriteLine(amount);
+            Console.WriteLine(amount + " Amount of Lions");
+            Console.WriteLine(amountR + " Amount of Rabbits");
             savannah.godDraws();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

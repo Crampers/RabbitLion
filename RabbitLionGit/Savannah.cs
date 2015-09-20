@@ -47,10 +47,15 @@ namespace RabbitLionGit
         }
         Bitmap bmp;
         Graphics grp;
-        private void drawField()
+
+        void startup()
         {
             bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             grp = Graphics.FromImage(bmp);
+        }
+        public void drawField()
+        {
+            startup();
             grp.Clear(Color.White);
             Pen p = new Pen(Color.Black);
             for (int i = 0; i < 401; i += 20)

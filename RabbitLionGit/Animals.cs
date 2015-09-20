@@ -106,7 +106,6 @@ namespace RabbitLionGit
                     } 
                 }
             }
-
             return null;
         }
 
@@ -116,7 +115,6 @@ namespace RabbitLionGit
             {
                 x--;
             }
-
             while (x < 0)
             {
                 x++;
@@ -129,7 +127,5 @@ namespace RabbitLionGit
             detectGrass();
             detectRabbit();
         }
-
-        
     }
 }
