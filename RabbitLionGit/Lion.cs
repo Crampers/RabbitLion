@@ -14,8 +14,8 @@ namespace RabbitLionGit
         public Lion(Savannah s, int x, int y)
             : base(s, x, y)
         {
-            int gend = s.r.Next(0, 10);
-            if (gend % 2 != 0)
+            int gend = s.r.Next(0, 100);
+            if (gend < 50)
                 gender = false;
             else
             {

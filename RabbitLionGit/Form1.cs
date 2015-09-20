@@ -94,7 +94,7 @@ namespace RabbitLionGit
             foreach (var animal in savannah.africa)
             {
                 if (animal.ani != null)
-                    Console.WriteLine(animal.ani.GetType());
+                    Console.WriteLine(animal.ani.gender);
             }
             foreach (var grass in savannah.africa)
             {
