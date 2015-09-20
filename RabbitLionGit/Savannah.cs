@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using RabbitsLions;
@@ -44,6 +45,18 @@ namespace RabbitLionGit
                     africa[ranX2, ranY2].grass = new Grass(this, ranX2, ranY2);
                 }
             }
+        }
+        public void playGame()
+        {
+            godDraws();
+            foreach (var field in africa)
+            {
+                if (field.ani != null)
+                {
+                    field.ani.move();
+                }
+            }
+            godDraws();
         }
         Bitmap bmp;
         Graphics grp;
