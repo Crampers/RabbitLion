@@ -77,21 +77,21 @@ namespace RabbitLionGit
 
         private void button1_Click(object sender, EventArgs e)
         {
-            savannah.playGame();
-
-            foreach (var animal in savannah.africa.Cast<Field>().Where(animal => animal.ani != null))
-            {
-                Console.WriteLine(animal.ani.gender);
-            }
-            foreach (var grass in savannah.africa.Cast<Field>().Where(grass => grass.grass != null))
-            {
-                Console.WriteLine(grass.grass.GetType());
-            }
-            int amount = savannah.africa.Cast<Field>().Count(animal => animal.ani is Lion);
-            int amountR = savannah.africa.Cast<Field>().Count(animal => animal.ani is Rabbit);
-            Console.WriteLine("----------------------------------------/");
-            Console.WriteLine(amount + " Amount of Lions");
-            Console.WriteLine(amountR + " Amount of Rabbits");
+            Thread thread = new Thread(new ThreadStart(savannah.playGame));
+            thread.Start();
+            //foreach (var animal in savannah.africa.Cast<Field>().Where(animal => animal.ani != null))
+            //{
+            //    Console.WriteLine(animal.ani.gender);
+            //}
+            //foreach (var grass in savannah.africa.Cast<Field>().Where(grass => grass.grass != null))
+            //{
+            //    Console.WriteLine(grass.grass.GetType());
+            //}
+            //int amount = savannah.africa.Cast<Field>().Count(animal => animal.ani is Lion);
+            //int amountR = savannah.africa.Cast<Field>().Count(animal => animal.ani is Rabbit);
+            //Console.WriteLine("----------------------------------------/");
+            //Console.WriteLine(amount + " Amount of Lions");
+            //Console.WriteLine(amountR + " Amount of Rabbits");
         }
 
         private void Form1_Load(object sender, EventArgs e)

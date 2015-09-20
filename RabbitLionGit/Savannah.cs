@@ -48,15 +48,20 @@ namespace RabbitLionGit
         }
         public void playGame()
         {
-            godDraws();
-            foreach (var field in africa)
+            while (true)
             {
-                if (field.ani != null)
+                godDraws();
+                foreach (var field in africa)
                 {
-                    field.ani.move();
+                    if (field.ani != null)
+                    {
+                        field.ani.move();
+                    }
+                    Console.WriteLine();
                 }
+                godDraws();
+                Thread.Sleep(500);
             }
-            godDraws();
         }
         Bitmap bmp;
         Graphics grp;
@@ -99,11 +104,11 @@ namespace RabbitLionGit
             Pen pLion = new Pen(Color.Goldenrod, 10);
             foreach (var field in africa)
             {
-                if (field.ani is Lion)
+                while (field.ani is Lion)
                 {
                     grp.DrawRectangle(pLion, (field.ani.posY * 20 + 6), (field.ani.posX * 20 + 6), 9, 9);
                 }
-                if (field.ani is Rabbit)
+                while (field.ani is Rabbit)
                 {
                     grp.DrawRectangle(pRabbit, (field.ani.posY * 20 + 6), (field.ani.posX * 20 + 6), 9, 9);
                 }
