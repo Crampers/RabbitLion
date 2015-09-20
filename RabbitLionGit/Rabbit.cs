@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using RabbitsLions;
 
@@ -26,25 +27,25 @@ namespace RabbitLionGit
             {
                 nposX--;
             }
-
             while (nposY > 19)
             {
                 nposY--;
             }
-
-
             while (nposX < 0)
             {
                 nposX++;
             }
-
             while (nposY < 0)
             {
                 nposY++;
             }
+            if (s.africa[nposX, nposY].ani == null)
+            {
+                s.africa[nposX, nposY].ani = this;
+                Thread.Sleep(20);
+                s.africa[posX, posY].ani = null;
+            }
 
-            s.africa[nposX, nposY].ani = this;
-            s.africa[posX, posY].ani = null;
             posX = nposX;
             posY = nposY;
             detectFRabbit();
@@ -68,7 +69,7 @@ namespace RabbitLionGit
             {
                 if (detecter.gender != detectee.gender)
                 {
-                    for (int i = 0; i <= 4; i++)
+                    for (int i = 0; i <= 5; i++)
                     {
                         s.africa[ranX2, ranY2].ani = new Rabbit(s, ranX2, ranY2);
                     }

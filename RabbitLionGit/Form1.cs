@@ -101,6 +101,7 @@ namespace RabbitLionGit
                 if(grass.grass != null)
                     Console.WriteLine(grass.grass.GetType());
             }
+            int amount = 0;
             for (int i = 0; i < 20; i++)
             {
                 for (int j = 0; j < 20; j++)
@@ -127,8 +128,17 @@ namespace RabbitLionGit
                     }
                 }
                 Console.WriteLine("|");
+                
+            }
+            foreach (var animal in savannah.africa)
+            {
+                if (animal.ani is Lion)
+                {
+                    amount = amount + 1;
+                }
             }
             Console.WriteLine("----------------------------------------/");
+            Console.WriteLine(amount);
             savannah.godDraws();
         }
     }

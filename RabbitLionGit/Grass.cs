@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RabbitLionGit
@@ -39,21 +40,21 @@ namespace RabbitLionGit
         {
             nposX = posX;
             nposY = posY;
-            if (nposX == 19)
+            while (nposX > 19)
             {
-                nposX = nposX + s.r.Next(-1, 0);
+                nposX--;
             }
-            if (nposY == 19)
+            while (nposY > 19)
             {
-                nposY = nposY + s.r.Next(-1, 0);
+                nposY--;
             }
-            if (nposX == 0)
+            while (nposX < 0)
             {
-                nposX = nposX + s.r.Next(0, 2);
+                nposX++;
             }
-            if (nposY == 0)
+            while (nposY < 0)
             {
-                nposY = nposY + s.r.Next(0, 2);
+                nposY++;
             }
             s.africa[nposX,nposY].grass = new Grass(s, nposX, nposY);
             s.godDraws();

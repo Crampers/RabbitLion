@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace RabbitLionGit
 {
@@ -46,14 +47,6 @@ namespace RabbitLionGit
             }            
         }
 
-        //private void move()
-        //{
-        //    int x = posX;
-        //    int y = posY;
-        //    if (x == 0)
-        //        x = x + s.r.Next(x, 2);
-            
-        //}
         public Animals detectLion()
         {
             int x = posX;
@@ -62,9 +55,13 @@ namespace RabbitLionGit
             {
                 for (int j = 0; j < 2; j++)
                 {
-                    if (s.africa[x + i, y+j].ani is Lion)
+                    x = x + i;
+                    y = y + j;
+                    x = check(x);
+                    y = check(y);
+                    if (s.africa[x , y].ani is Lion)
                     {
-                        return s.africa[x + i, y + j].ani;
+                        return s.africa[x , y].ani;
                     }
                 }
             }
@@ -79,9 +76,13 @@ namespace RabbitLionGit
             {
                 for (int j = 0; j < 2; j++)
                 {
-                    if (s.africa[x + i, y + j].ani is Rabbit)
+                    x = x + i;
+                    y = y + j;
+                    x = check(x);
+                    y = check(y);
+                    if (s.africa[x , y].ani is Rabbit)
                     {
-                        return s.africa[x + i, y + j].ani;
+                        return s.africa[x , y].ani;
                     }
                 }
             }
@@ -95,10 +96,10 @@ namespace RabbitLionGit
             {
                 for (int j = -1; j < 2; j++)
                 {
-                    if (x + i > 19 || y + j > 19)
-                    {
-                        this++;
-                    }
+                    x = x + i;
+                    y = y + j;
+                    x = check(x);
+                    y = check(y);
                     if (s.africa[x, y].grass != null)
                     {
                         return s.africa[x, y].grass;
@@ -107,6 +108,20 @@ namespace RabbitLionGit
             }
 
             return null;
+        }
+
+        public int check(int x)
+        {
+            while (x > 19)
+            {
+                x--;
+            }
+
+            while (x < 0)
+            {
+                x++;
+            }
+            return x;
         }
 
         public void detectFRabbit()

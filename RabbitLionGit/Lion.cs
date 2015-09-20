@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using RabbitsLions;
 
@@ -48,8 +49,13 @@ namespace RabbitLionGit
             {
                 nposY++;
             }
-            s.africa[nposX, nposY].ani = this;
-            s.africa[posX, posY].ani = null;
+            if (s.africa[nposX, nposY].ani == null)
+            {
+                s.africa[nposX, nposY].ani = this;
+                Thread.Sleep(20);
+                s.africa[posX, posY].ani = null;
+            }
+
             posX = nposX;
             posY = nposY;
             s.godDraws();
@@ -72,7 +78,7 @@ namespace RabbitLionGit
             {
                 if (detecter.gender != detectee.gender)
                 {
-                    for (int i = 0; i <= 2; i++)
+                    for (int i = 0; i <= 3; i++)
                     {
                         s.africa[ranX2, ranY2].ani = new Lion(s, ranX2, ranY2);
                     }
