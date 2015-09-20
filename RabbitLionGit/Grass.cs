@@ -40,24 +40,23 @@ namespace RabbitLionGit
         {
             nposX = posX;
             nposY = posY;
-            while (nposX > 19)
-            {
-                nposX--;
-            }
-            while (nposY > 19)
-            {
-                nposY--;
-            }
-            while (nposX < 0)
-            {
-                nposX++;
-            }
-            while (nposY < 0)
-            {
-                nposY++;
-            }
+            nposY = check(nposY);
+            nposX = check(nposX);
             s.africa[nposX,nposY].grass = new Grass(s, nposX, nposY);
             s.godDraws();
+        }
+        public int check(int x)
+        {
+            while (x > 19)
+            {
+                x--;
+            }
+
+            while (x < 0)
+            {
+                x++;
+            }
+            return x;
         }
     }
 }

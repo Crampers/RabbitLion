@@ -128,7 +128,7 @@ namespace RabbitLionGit
                     }
                 }
                 Console.WriteLine("|");
-                
+                savannah.godDraws();
             }
             foreach (var animal in savannah.africa)
             {

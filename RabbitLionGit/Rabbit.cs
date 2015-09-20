@@ -23,22 +23,8 @@ namespace RabbitLionGit
 
             nposX = nposX + s.r.Next(-2, 3);
             nposY = nposY + s.r2.Next(-2, 3);
-            while (nposX > 19)
-            {
-                nposX--;
-            }
-            while (nposY > 19)
-            {
-                nposY--;
-            }
-            while (nposX < 0)
-            {
-                nposX++;
-            }
-            while (nposY < 0)
-            {
-                nposY++;
-            }
+            nposY = check(nposY);
+            nposX = check(nposX);
             if (s.africa[nposX, nposY].ani == null)
             {
                 s.africa[nposX, nposY].ani = this;
@@ -59,6 +45,7 @@ namespace RabbitLionGit
             var yGrass = killMe.posY;
             s.africa[xGrass, yGrass].grass = null;
             weight = weight * (killMe.weight * -1.75);
+            s.godDraws();
         }
 
         public override void mate(Animals detecter, Animals detectee)
@@ -69,9 +56,11 @@ namespace RabbitLionGit
             {
                 if (detecter.gender != detectee.gender)
                 {
-                    for (int i = 0; i <= 5; i++)
+                    for (int i = 0; i < 4;)
                     {
                         s.africa[ranX2, ranY2].ani = new Rabbit(s, ranX2, ranY2);
+                        i++;
+                        s.godDraws();
                     }
                 }
             }
